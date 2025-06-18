@@ -1,0 +1,20 @@
+.full-width { width: 100%;  margin-top:20px;}
+     .scan-form { max-width: 600px; margin: 20px auto; }
+     .result { margin: 20px; }
+
+     .actions{
+          margin-top:10px;
+           display: flex;
+  justify-content: center;
+  margin-bottom:10px;
+     }
+
+     .attack-type{
+ display: flex;
+  justify-content: center;
+      }
+ 
+     .ssl-card { margin: 16px; }
+.tile-label { font-weight: 600; }
+.tile-value { padding-left: 8px; }
+.endpoint-block { margin-bottom: 16px; }

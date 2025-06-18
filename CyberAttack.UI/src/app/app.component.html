@@ -1,0 +1,190 @@
+<mat-card style="max-width:600px; margin:2em auto;">
+  <form [formGroup]="scanForm" (ngSubmit)="onSubmit()">
+
+    <div class="attack-type">
+    <mat-button-toggle-group
+      formControlName="scanType"
+      appearance="legacy"
+      class=" mb-16">
+    
+      <mat-button-toggle value="dirbrute">Directory Brute</mat-button-toggle>
+      <mat-button-toggle value="sslanalyze">SSL Analyzer</mat-button-toggle>
+        <mat-button-toggle value="active">Active Scan</mat-button-toggle>
+      <mat-button-toggle value="passive">Passive Scan</mat-button-toggle>
+    </mat-button-toggle-group>
+</div>
+
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Target URL</mat-label>
+      <input matInput placeholder="https://example.com" formControlName="targetUrl">
+      <mat-error *ngIf="scanForm.get('targetUrl')?.hasError('required')">
+        URL required
+      </mat-error>
+    </mat-form-field>
+
+
+     <div *ngIf="scanForm.get('scanType')!.value !== 'dirbrute' && scanForm.get('scanType')!.value !== 'sslanalyze'">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Attack Types</mat-label>
+        <mat-select formControlName="attackTypes" multiple>
+          <mat-option
+            *ngFor="let opt of currentAttackOptions"
+            [value]="opt.value">
+            {{ opt.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="scanForm.get('attackTypes')?.hasError('required')">
+          Select at least 1 type
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="actions">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="loading">
+        {{ loading ? 'Processing…' : 'Start Scan' }}
+      </button>
+    </div>
+  </form>
+</mat-card>
+
+<mat-card   style="max-width:600px; margin:2em auto;" *ngIf="result" class="mt-16">
+
+   <div *ngIf="scanForm.get('scanType')!.value === 'dirbrute'">
+    <h3>Discovered Paths:</h3>
+    <ul>
+      <li *ngFor="let u of result.urlLeaks">{{ u }}</li>
+    </ul>
+  </div>
+
+    <div *ngIf="scanForm.get('scanType')!.value === 'sslanalyze'">
+    <h3>SSL/TLS Result:</h3>
+
+  
+    <mat-accordion multi>
+
+       <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Overview</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-grid-list cols="2" rowHeight="4rem" gutterSize="16px">
+          <mat-grid-tile>
+            <div class="tile-label">Status</div>
+            <div class="tile-value">{{ result.sslSummary.status }}</div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div class="tile-label">Tested On</div>
+            <div class="tile-value">{{ result.sslSummary.testTime | date:'medium' }}</div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div class="tile-label">Port</div>
+            <div class="tile-value">{{ result.sslSummary.port }}</div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div class="tile-label">Protocol</div>
+            <div class="tile-value">{{ result.sslSummary.protocol }}</div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-expansion-panel>
+
+       <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Endpoints ({{ result.sslSummary.endpoints.length }})</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div *ngFor="let ep of result.sslSummary.endpoints; let i = index" class="endpoint-block">
+          <h4>Endpoint #{{ i + 1 }}</h4>
+          <mat-grid-list cols="2" rowHeight="3.5rem" gutterSize="16px">
+            <mat-grid-tile>
+              <div class="tile-label">IP Address</div>
+              <div class="tile-value">{{ ep.ipAddress }}</div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <div class="tile-label">Grade</div>
+              <div class="tile-value">{{ ep.grade }}</div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <div class="tile-label">Warnings</div>
+              <div class="tile-value">{{ ep.hasWarnings ? 'Yes' : 'No' }}</div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <div class="tile-label">Protocols</div>
+              <div class="tile-value">{{ ep.protocols.join(', ') }}</div>
+            </mat-grid-tile>
+          </mat-grid-list>
+          <mat-divider></mat-divider>
+        </div>
+      </mat-expansion-panel>
+
+       <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Certificate</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-grid-list cols="2" rowHeight="3.5rem" gutterSize="16px">
+          <mat-grid-tile>
+            <div class="tile-label">Valid From</div>
+            <div class="tile-value">{{ result.sslSummary.certificate?.notBefore | date:'mediumDate' }}</div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div class="tile-label">Valid Until</div>
+            <div class="tile-value">{{ result.sslSummary.certificate?.notAfter | date:'mediumDate' }}</div>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="2">
+            <div class="tile-label">Subject CN</div>
+            <div class="tile-value">{{ result.sslSummary.certificate?.commonNames.join(', ') }}</div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-expansion-panel>
+
+   
+   
+    </mat-accordion>
+ 
+ 
+
+ 
+  </div>
+
+
+   <div *ngIf="scanForm.get('scanType')!.value !== 'dirbrute' && scanForm.get('scanType')!.value !== 'sslanalyze'">
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+       <ng-container matColumnDef="pluginId">
+        <th mat-header-cell *matHeaderCellDef>Plugin ID</th>
+        <td mat-cell *matCellDef="let el">{{ el.pluginId }}</td>
+      </ng-container>
+
+       <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Alert</th>
+        <td mat-cell *matCellDef="let el">{{ el.alert }}</td>
+      </ng-container>
+
+       <ng-container matColumnDef="risk">
+        <th mat-header-cell *matHeaderCellDef>Risk</th>
+        <td mat-cell *matCellDef="let el">{{ el.risk }}</td>
+      </ng-container>
+
+       <ng-container matColumnDef="url">
+        <th mat-header-cell *matHeaderCellDef>URL</th>
+        <td mat-cell *matCellDef="let el">{{ el.url }}</td>
+      </ng-container>
+
+            <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let el">{{ el.description }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row        *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+</mat-card>
+

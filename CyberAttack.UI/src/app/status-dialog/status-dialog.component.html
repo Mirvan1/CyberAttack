@@ -1,0 +1,18 @@
+ <h2 mat-dialog-title>Scan Status (#{{data.scanId}})</h2>
+  <mat-dialog-content>
+    <div *ngIf="progress < 100">
+      <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+      <p>{{progress}}% complete</p>
+    </div>
+    <div *ngIf="progress >= 100">
+      <h3>Results:</h3>
+      <mat-list>
+        <mat-list-item *ngFor="let a of alerts">
+          <strong>{{a.name}}</strong> ({{a.risk}}) — {{a.url}}
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close (click)="close()">Close</button>
+  </mat-dialog-actions>
