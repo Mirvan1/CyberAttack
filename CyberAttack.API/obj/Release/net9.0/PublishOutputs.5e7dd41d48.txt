@@ -1,0 +1,12 @@
+C:\Users\Mirvan\source\repos\CyberAttack\CyberAttack.API\obj\Release\net9.0\PubTmp\Out\CyberAttack.API.exe
+C:\Users\Mirvan\source\repos\CyberAttack\CyberAttack.API\obj\Release\net9.0\PubTmp\Out\appsettings.Development.json
+C:\Users\Mirvan\source\repos\CyberAttack\CyberAttack.API\obj\Release\net9.0\PubTmp\Out\appsettings.json
+C:\Users\Mirvan\source\repos\CyberAttack\CyberAttack.API\obj\Release\net9.0\PubTmp\Out\CyberAttack.API.dll
+C:\Users\Mirvan\source\repos\CyberAttack\CyberAttack.API\obj\Release\net9.0\PubTmp\Out\CyberAttack.API.deps.json
+C:\Users\Mirvan\source\repos\CyberAttack\CyberAttack.API\obj\Release\net9.0\PubTmp\Out\CyberAttack.API.runtimeconfig.json
+C:\Users\Mirvan\source\repos\CyberAttack\CyberAttack.API\obj\Release\net9.0\PubTmp\Out\CyberAttack.API.pdb
+C:\Users\Mirvan\source\repos\CyberAttack\CyberAttack.API\obj\Release\net9.0\PubTmp\Out\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\Mirvan\source\repos\CyberAttack\CyberAttack.API\obj\Release\net9.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\Users\Mirvan\source\repos\CyberAttack\CyberAttack.API\obj\Release\net9.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Mirvan\source\repos\CyberAttack\CyberAttack.API\obj\Release\net9.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Mirvan\source\repos\CyberAttack\CyberAttack.API\obj\Release\net9.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

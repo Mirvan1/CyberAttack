@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Io7YFTFiZD/WvtcSy/mdXExR2TYvZ6149opUVKWaNBE=",
+  "Source": "CyberAttack.API",
+  "BasePath": "_content/CyberAttack.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

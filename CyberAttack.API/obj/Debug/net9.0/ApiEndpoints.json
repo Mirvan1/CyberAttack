@@ -1,0 +1,180 @@
+[
+  {
+    "ContainingType": "CyberAttack.API.Controllers.ScanController",
+    "Method": "StartActiveScan",
+    "RelativePath": "api/Scan/active-scan",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "targetUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "attackTypes",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CyberAttack.API.Controllers.ScanController",
+    "Method": "DirBruteForce",
+    "RelativePath": "api/Scan/directory-brute-force",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "targetUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CyberAttack.API.Controllers.ScanController",
+    "Method": "DisableScanner",
+    "RelativePath": "api/Scan/disable-scan",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CyberAttack.API.Controllers.ScanController",
+    "Method": "StartPassiveScan",
+    "RelativePath": "api/Scan/passive-scan",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "targetUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "attackTypes",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CyberAttack.API.Controllers.ScanController",
+    "Method": "GetSslReport",
+    "RelativePath": "api/Scan/ssl-report",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "targetUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CyberAttack.API.Controllers.ScanController",
+    "Method": "StartAttack",
+    "RelativePath": "api/Scan/start-attack",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "targetUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "attackTypes",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CyberAttack.API.Controllers.ScanController",
+    "Method": "AttackStatus",
+    "RelativePath": "api/Scan/status-attack",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "scanId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "targetUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "attackTypes",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CyberAttack.API.Controllers.ScanController",
+    "Method": "AttackStatus2",
+    "RelativePath": "api/Scan/status-attack2",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "scanId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "targetUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "attackTypes",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CyberAttack.API.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CyberAttack.API.WeatherForecast, CyberAttack.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]
